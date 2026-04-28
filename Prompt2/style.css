@@ -1,0 +1,164 @@
+/* Reset des marges de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f7f6;
+    overflow-x: hidden;
+}
+
+/* En-tête et Navigation */
+header {
+    background: #2c3e50;
+    color: #fff;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #18bc9c;
+}
+
+/* Hamburger Menu (Caché par défaut) */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+/* Style général des sections */
+section {
+    padding: 5rem 10%;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    color: #2c3e50;
+}
+
+/* Section Accueil (Hero) */
+#hero {
+    background: linear-gradient(135deg, #18bc9c 0%, #2c3e50 100%);
+    color: white;
+    padding: 8rem 10%;
+}
+
+#hero h1 { font-size: 3.5rem; margin-bottom: 1rem; }
+#hero p { font-size: 1.2rem; margin-bottom: 2rem; }
+
+.btn {
+    display: inline-block;
+    background: #fff;
+    color: #2c3e50;
+    padding: 0.8rem 1.8rem;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: background 0.3s, color 0.3s;
+}
+
+.btn:hover { background: #2c3e50; color: #fff; border: 1px solid #fff; }
+
+/* Grille des projets avec préparation pour l'animation JS */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 2rem;
+}
+
+.project-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-align: left;
+    /* Configurations de base pour le Scroll Reveal JS */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s;
+}
+
+.project-card h3 { color: #18bc9c; margin-bottom: 1rem; }
+.project-card:hover { box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
+
+/* Pied de page */
+footer { text-align: center; padding: 1.5rem; background: #2c3e50; color: white; font-size: 0.9rem; }
+
+/* Responsive Design (Mobiles et Tablettes) */
+@media screen and (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+    
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: #2c3e50;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.3s ease-in-out;
+    }
+    
+    .nav-links.active {
+        max-height: 300px; /* Laisse de la place pour afficher les liens */
+    }
+    
+    .nav-links li {
+        margin: 15px 0;
+    }
+}
