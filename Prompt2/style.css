@@ -9,17 +9,41 @@ html {
     scroll-behavior: smooth;
 }
 
+:root {
+    --bg-color: #e9ecef;
+    --text-color: #333;
+    --heading-color: #111111;
+    --nav-bg: #1a1a1a;
+    --card-bg: white;
+    --primary-color: #d90429; /* Rouge Course */
+    --hero-grad-1: #d90429;
+    --hero-grad-2: #2b2d42; /* Gris Asphalte foncé */
+    --footer-bg: #111111;
+}
+
+body.dark-mode {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --heading-color: #ffffff;
+    --nav-bg: #0a0a0a;
+    --card-bg: #1e1e1e;
+    --hero-grad-1: #8d0808;
+    --hero-grad-2: #0a0a0a;
+    --footer-bg: #050505;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #f4f7f6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* En-tête et Navigation */
 header {
-    background: #2c3e50;
+    background: var(--nav-bg);
     color: #fff;
     padding: 1rem 0;
     position: sticky;
@@ -55,13 +79,24 @@ nav {
 }
 
 .nav-links a:hover {
-    color: #18bc9c;
+    color: var(--primary-color);
 }
 
 /* Style pour le lien de navigation actif */
 .nav-links a.active-link {
-    color: #18bc9c;
+    color: var(--primary-color);
 }
+
+/* Bouton Toggle Thème */
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0 5px;
+    transition: transform 0.3s;
+}
+.theme-toggle:hover { transform: scale(1.2); }
 
 /* Hamburger Menu (Caché par défaut) */
 .hamburger {
@@ -88,23 +123,24 @@ section {
 h2 {
     font-size: 2.2rem;
     margin-bottom: 2rem;
-    color: #2c3e50;
+    color: var(--heading-color);
+    transition: color 0.3s ease;
 }
 
 /* Section Accueil (Hero) */
 #hero {
-    background: linear-gradient(135deg, #18bc9c 0%, #2c3e50 100%);
+    background: linear-gradient(135deg, var(--hero-grad-1) 0%, var(--hero-grad-2) 100%);
     color: white;
     padding: 8rem 10%;
 }
 
-#hero h1 { font-size: 3.5rem; margin-bottom: 1rem; }
+#hero h1 { font-size: 3.5rem; margin-bottom: 1rem; font-style: italic; text-transform: uppercase; letter-spacing: 2px; }
 #hero p { font-size: 1.2rem; margin-bottom: 2rem; }
 
 .btn {
     display: inline-block;
     background: #fff;
-    color: #2c3e50;
+    color: var(--nav-bg);
     padding: 0.8rem 1.8rem;
     text-decoration: none;
     border-radius: 25px;
@@ -112,7 +148,7 @@ h2 {
     transition: background 0.3s, color 0.3s;
 }
 
-.btn:hover { background: #2c3e50; color: #fff; border: 1px solid #fff; }
+.btn:hover { background: var(--nav-bg); color: #fff; border: 1px solid #fff; }
 
 /* Grille des projets avec préparation pour l'animation JS */
 .project-grid {
@@ -123,27 +159,154 @@ h2 {
 }
 
 .project-card {
-    background: white;
+    background: var(--card-bg);
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     text-align: left;
-    /* Configurations de base pour le Scroll Reveal JS */
+    /* Configurations de base pour le Scroll Reveal & Tilt 3D */
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s;
+    --rx: 0deg;
+    --ry: 0deg;
+    transform: perspective(1000px) translateY(30px) rotateX(var(--rx)) rotateY(var(--ry));
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s, background-color 0.3s;
 }
 
-.project-card h3 { color: #18bc9c; margin-bottom: 1rem; }
+.project-card h3 { color: var(--primary-color); margin-bottom: 1rem; }
 .project-card:hover { box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
+
+/* Section Compétences */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.skill-category {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    flex: 1 1 250px;
+    transition: background-color 0.3s;
+}
+
+.skill-category h3 {
+    color: var(--heading-color);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.skill-tags span {
+    background: var(--nav-bg);
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.skill-tags span:hover {
+    transform: scale(1.05);
+    background: var(--primary-color);
+}
+
+/* Section Expérience (Timeline) */
+.timeline {
+    max-width: 800px;
+    margin: 0 auto;
+    border-left: 4px solid var(--primary-color);
+    padding-left: 30px;
+    text-align: left;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -42px;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    background-color: var(--primary-color);
+    border: 4px solid var(--bg-color);
+    border-radius: 50%;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.timeline-content {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: background-color 0.3s;
+}
+
+.timeline-content h3 {
+    color: var(--heading-color);
+    margin-bottom: 0.3rem;
+    font-size: 1.3rem;
+}
+
+.timeline-content h4 {
+    color: var(--primary-color);
+    font-style: italic;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-weight: normal;
+}
+
+/* Section Contact - Liens sociaux */
+.social-links {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.social-icon {
+    color: var(--heading-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 0.5rem 1.5rem;
+    border: 2px solid var(--heading-color);
+    border-radius: 25px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.social-icon:hover {
+    background-color: var(--heading-color);
+    color: var(--bg-color);
+}
 
 /* Pied de page */
 footer { 
     text-align: center; 
     padding: 1.5rem; 
-    background: #2c3e50; 
+    background: var(--footer-bg); 
     color: white; 
     font-size: 0.9rem; 
+    transition: background-color 0.3s;
 }
 
 /* Bouton "Retour en haut" */
@@ -151,7 +314,7 @@ footer {
     position: fixed;
     bottom: 25px;
     right: 25px;
-    background: #18bc9c;
+    background: var(--primary-color);
     color: white;
     width: 45px;
     height: 45px;
@@ -171,11 +334,45 @@ footer {
     visibility: visible;
 }
 .back-to-top:hover {
-    background: #2c3e50;
+    background: var(--nav-bg);
+}
+
+/* Curseurs personnalisés */
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--primary-color);
+}
+.cursor-outline {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--primary-color);
+}
+.cursor-dot, .cursor-outline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 9999;
+    pointer-events: none;
 }
 
 /* Responsive Design (Mobiles et Tablettes) */
 @media screen and (max-width: 768px) {
+    .cursor-dot, .cursor-outline {
+        display: none; /* Désactivé sur mobile/tactile */
+    }
+    
+    /* Ajustement de la timeline pour ne pas coller au bord gauche sur mobile */
+    .timeline {
+        margin-left: 15px; 
+        padding-left: 20px;
+    }
+    .timeline-dot {
+        left: -32px;
+    }
+
     .hamburger {
         display: flex;
     }
@@ -195,7 +392,7 @@ footer {
         position: absolute;
         top: 100%;
         right: 0;
-        background-color: #2c3e50;
+        background-color: var(--nav-bg);
         flex-direction: column;
         width: 100%;
         text-align: center;

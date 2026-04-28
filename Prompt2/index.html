@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Samuel Loonis</title>
+    <title>Portfolio Auto - Samuel Loonis</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,8 +18,11 @@
             </div>
             <ul class="nav-links">
                 <li><a href="#about">À propos</a></li>
+                <li><a href="#skills">Compétences</a></li>
+                <li><a href="#experience">Expérience</a></li>
                 <li><a href="#projects">Projets</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">🌙</button></li>
             </ul>
         </nav>
     </header>
@@ -27,45 +30,115 @@
     <section id="hero">
         <div class="hero-content">
             <h1>Bonjour, je suis Samuel Loonis</h1>
-            <p>Bienvenue sur mon portfolio. Je suis étudiant en Architecture des Systèmes d'Information.</p>
+            <p>Bienvenue sur mon portfolio. Ingénieur passionné par le sport automobile et les systèmes embarqués.</p>
             <a href="#projects" class="btn">Voir mes projets</a>
         </div>
     </section>
 
     <section id="about">
         <h2>À propos de moi</h2>
-        <p>Passionné par l'informatique et les nouvelles technologies, ce portfolio a pour but de présenter les différents projets sur lesquels j'ai pu travailler durant mes études et mon temps libre.</p>
+        <p style="max-width: 800px; margin: 0 auto;">Fasciné par l'adrénaline de la course et la précision de la mécanique depuis mon plus jeune âge, j'ai orienté mes études vers les technologies qui font avancer les véhicules de demain. Ce portfolio présente mes réalisations, mêlant développement logiciel, télémétrie en temps réel et optimisation de systèmes automobiles.</p>
+    </section>
+
+    <section id="skills">
+        <h2>Compétences Techniques</h2>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3>Systèmes Embarqués</h3>
+                <div class="skill-tags">
+                    <span>C/C++</span>
+                    <span>Arduino</span>
+                    <span>Bus CAN</span>
+                    <span>Microcontrôleurs</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Développement Informatique</h3>
+                <div class="skill-tags">
+                    <span>Python</span>
+                    <span>React Native</span>
+                    <span>Node.js</span>
+                    <span>Git / GitHub</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Mécanique & Analyse</h3>
+                <div class="skill-tags">
+                    <span>WinOLS</span>
+                    <span>OBD2 / EOBD</span>
+                    <span>Acquisition de Données</span>
+                    <span>CAO (SolidWorks)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>Mon Expérience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Stage Ingénieur Télémétrie</h3>
+                    <h4>Écurie Auto Sport - 2023</h4>
+                    <p>Analyse des données de course, optimisation des réglages châssis et développement d'outils de visualisation personnalisés pour l'équipe technique.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Projet Étudiant : Formule SAE</h3>
+                    <h4>Université - 2022/2023</h4>
+                    <p>Responsable du pôle électronique : conception du faisceau électrique, programmation de l'ECU et mise en place d'un système d'acquisition de données embarqué.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section id="projects">
         <h2>Mes Projets</h2>
         <div class="project-grid">
             <div class="project-card">
-                <h3>Projet 1</h3>
-                <p>Description courte du premier projet. Qu'est-ce que c'est et quelles technologies ont été utilisées.</p>
+                <h3>Système de Télémétrie de Course</h3>
+                <p>Développement d'un tableau de bord affichant les données en temps réel d'un véhicule sur piste (températures, pressions, régime moteur).<br><strong>Technologies :</strong> C++, Qt, Bus CAN, Python.</p>
             </div>
             <div class="project-card">
-                <h3>Projet 2</h3>
-                <p>Description courte du deuxième projet. Par exemple, une architecture réseau ou une application.</p>
+                <h3>Reprogrammation Moteur (ECU)</h3>
+                <p>Analyse et modification des cartographies d'injection pour optimiser les performances d'un moteur thermique. Gain de puissance et de couple validé sur banc d'essai.<br><strong>Outils :</strong> WinOLS, Interface OBD2.</p>
             </div>
             <div class="project-card">
-                <h3>Projet 3</h3>
-                <p>Description courte du troisième projet. Les défis rencontrés et les solutions apportées.</p>
+                <h3>Application 'TrackDay Manager'</h3>
+                <p>Création d'une application web pour gérer ses sessions sur circuit : chronométrage GPS, historique des réglages châssis et usure des pneumatiques.<br><strong>Technologies :</strong> React Native, API Google Maps.</p>
+            </div>
+            <div class="project-card">
+                <h3>Aérodynamique Active</h3>
+                <p>Conception et programmation d'un aileron arrière dynamique s'inclinant lors des phases de freinage pour augmenter l'appui, testé sur un modèle réduit 1/8ème.<br><strong>Technologies :</strong> Arduino, Impression 3D.</p>
             </div>
         </div>
     </section>
 
     <section id="contact">
         <h2>Contact</h2>
-        <p>Vous souhaitez me contacter pour une opportunité ou une question ?<br><br> Envoyez-moi un email à : <a href="mailto:samuel.loonis@example.com">samuel.loonis@example.com</a></p>
+        <p>Vous souhaitez discuter d'un projet, d'une opportunité ou simplement échanger ?<br>N'hésitez pas à me contacter par email ou à me retrouver sur les réseaux :</p>
+        <p style="margin-top: 1.5rem; font-size: 1.1rem;"><a href="mailto:samuel.loonis@example.com">samuel.loonis@example.com</a></p>
+
+        <div class="social-links">
+            <a href="https://github.com/your-username" target="_blank" class="social-icon">GitHub</a>
+            <a href="https://linkedin.com/in/your-username" target="_blank" class="social-icon">LinkedIn</a>
+            <a href="https://www.twitch.tv/your-username" target="_blank" class="social-icon">Twitch</a>
+        </div>
     </section>
 
     <footer>
-        <p>&copy; 2023 Samuel Loonis. Tous droits réservés.</p>
+        <p>&copy; 2024 Samuel Loonis. Tous droits réservés.</p>
     </footer>
 
     <!-- Bouton "Retour en haut" -->
     <a href="#" class="back-to-top" title="Retour en haut">↑</a>
+
+    <!-- Curseurs personnalisés -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
 
     <!-- Script Vanilla JS externe -->
     <script src="script.js"></script>
