@@ -58,6 +58,11 @@ nav {
     color: #18bc9c;
 }
 
+/* Style pour le lien de navigation actif */
+.nav-links a.active-link {
+    color: #18bc9c;
+}
+
 /* Hamburger Menu (Caché par défaut) */
 .hamburger {
     display: none;
@@ -133,7 +138,41 @@ h2 {
 .project-card:hover { box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
 
 /* Pied de page */
-footer { text-align: center; padding: 1.5rem; background: #2c3e50; color: white; font-size: 0.9rem; }
+footer { 
+    text-align: center; 
+    padding: 1.5rem; 
+    background: #2c3e50; 
+    color: white; 
+    font-size: 0.9rem; 
+}
+
+/* Bouton "Retour en haut" */
+.back-to-top {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #18bc9c;
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 22px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s, visibility 0.4s, background-color 0.3s;
+    z-index: 1000;
+}
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+.back-to-top:hover {
+    background: #2c3e50;
+}
 
 /* Responsive Design (Mobiles et Tablettes) */
 @media screen and (max-width: 768px) {
@@ -141,6 +180,17 @@ footer { text-align: center; padding: 1.5rem; background: #2c3e50; color: white;
         display: flex;
     }
     
+    /* Animation du hamburger en croix */
+    .hamburger.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
     .nav-links {
         position: absolute;
         top: 100%;
